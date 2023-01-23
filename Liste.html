@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+  </head>
+
+  <body>
+    <input type="text" id="list"/>
+    <button id="main">Ajouter</button>
+    <ul>
+    </ul>
+
+    <script>
+      let button = document.querySelector("#main");
+      let liste = document.querySelector("ul");
+      let input = document.querySelector("#list");
+
+      button.addEventListener("click", addItem);
+      button.addEventListener("click", clear);
+      input.addEventListener("input", updateButton);
+
+function updateButton() {
+  button.innerHTML = `Ajouter <strong>${input.value}</strong> à la liste`;
+}
+      function clear() {
+        input.value = "";
+      }
+      
+      function addItem() {
+        if(input.value === ""){
+    alert("Please enter a valid item");
+    return;
+  }
+        let newLi = document.createElement("li");
+        newLi.innerHTML = `
+         ${input.value}`;
+        liste.appendChild(newLi);
+      }
+    </script>
+
+  </body>
+</html>
